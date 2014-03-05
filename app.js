@@ -1,9 +1,18 @@
 var express = require("express"),
         app = express(),
         redis = require("redis"),
-        client = redis.createClient(),
-        moment = require('moment');
+        client = redis.createClient(6379, "127.0.0.1", {connect_timeout: 2000, auth_pass: "zedr6neyatre5wesTubR"}),
+moment = require('moment');
 
+client.on("ready", function() {
+    console.log("Redis client ready");
+});
+client.on("connect", function() {
+    console.log("Redis connected");
+});
+client.on("error", function(err) {
+    console.log("Error " + err);
+});
 app.use(express.bodyParser());
 
 app.post("/stats/save", function(req, res) {
