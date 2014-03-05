@@ -1,7 +1,7 @@
 var express = require("express"),
         app = express(),
         redis = require("redis"),
-        client = redis.createClient(6379, "127.0.0.1", {connect_timeout: 2000, auth_pass: "zedr6neyatre5wesTubR"}),
+        client = redis.createClient(6379, "127.0.0.1", {connect_timeout: 2000}),
 moment = require('moment');
 
 client.on("ready", function() {
