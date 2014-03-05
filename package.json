@@ -4,7 +4,7 @@
   "description": "Socialkick stats server to save stats to redis",
   "main": "app.js",
   "dependencies": {
-    "express": "~4.0.0-rc2",
+    "express": "3.x",
     "hiredis": "~0.1.16",
     "moment": "~2.5.1",
     "redis": "~0.10.1"

@@ -5,8 +5,6 @@ var express = require("express"),
         moment = require('moment');
 
 app.use(express.bodyParser());
-app.use(express.methodOverride());
-app.use(app.router); 
 
 app.post("/stats/save", function(req, res) {
     console.log(req.body);
