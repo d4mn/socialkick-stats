@@ -7,16 +7,17 @@ var express = require("express"),
 app.use(express.bodyParser());
 
 app.post("/stats/save", function(req, res) {
-    console.log(req.body);
     /* some server side logic */
-    /*var dd = moment().format("YYYYMMDD");
-     var vid = req.body.vid, uid = req.body.uid, action = req.body.a;
-     var yearStats = "stats:"+action+":"+uid+":"+vid+":"+moment().format("YYYY");
-     var monthStats = "stats:"+action+":"+uid+":"+vid+":"+moment().format("YYYYMM");
-     var dailyStats = "stats:"+action+":"+uid+":"+vid+":"+moment().format("YYYYMMDD");
-     client.incr(yearStats);
-     client.incr(monthStats);
-     client.incr(dailyStats);*/
+    var dd = moment().format("YYYYMMDD");
+    var vid = req.body.vid, uid = req.body.uid, action = req.body.a;
+    if (vid !== "" && uid !== "" && action !== "") {
+        var yearStats = "stats:" + action + ":" + uid + ":" + vid + ":" + moment().format("YYYY");
+        var monthStats = "stats:" + action + ":" + uid + ":" + vid + ":" + moment().format("YYYYMM");
+        var dailyStats = "stats:" + action + ":" + uid + ":" + vid + ":" + moment().format("YYYYMMDD");
+        client.incr(yearStats);
+        client.incr(monthStats);
+        client.incr(dailyStats);
+    }
     res.send("OK");
 });
 
